@@ -3,18 +3,19 @@ name: Python CI
 on:
   push:
     branches:
-      - main
+      - master
       - development
       - release
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -26,6 +27,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          pip install sphinx
 
       - name: Run tests
         run: |
@@ -33,5 +35,4 @@ jobs:
 
       - name: Generate documentation
         run: |
-          pip install sphinx
-          sphinx-build docs/ docs/_build
+          sphinx-build -n -b html docs/ docs/_build
