@@ -6,15 +6,24 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
+import os
+import sys
+sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(0, os.path.abspath('../tests'))
+
 project = 'lab'
 copyright = '2024, dmitriy'
 author = 'dmitriy'
 release = '1.0.0'
+html_theme = 'alabaster'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = []
+extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.napoleon',
+]
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
@@ -26,3 +35,4 @@ language = 'ru'
 
 html_theme = 'alabaster'
 html_static_path = ['_static']
+
